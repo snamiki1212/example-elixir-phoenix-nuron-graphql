@@ -1,19 +1,23 @@
-# Gh
+# elixir-phoenix-nuron-github
 
-To start your Phoenix server:
+- elixir: language
+- Phoenix: Web Framework
+- nuron: GraphQL client
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## Getting started
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+```zsh
+## set up env file
+cp config/dev.sercret.example.exs config/dev.sercret.exs
+open config/dev.sercret.exs  # update to use user github api token
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## set up server
+mix deps.get
+mix server
+curl http://localhost:4000/users/1
+# => get your github username
+```
 
-## Learn more
+## LICENSE
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+MIT

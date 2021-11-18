@@ -12,6 +12,7 @@ defmodule GhWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    resources "/users", GhWeb.UserController, only: [:index]
   end
 
   scope "/", GhWeb do

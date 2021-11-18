@@ -1,5 +1,7 @@
 import Config
 
+import_config "dev.secret.exs"
+
 # Configure your database
 config :gh, Gh.Repo,
   username: "postgres",

@@ -32,3 +32,6 @@ gh-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# secret files
+**/*.secret.exs
+
