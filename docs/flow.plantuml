@@ -1,0 +1,16 @@
+@startuml
+!theme crt-amber
+
+' Define
+actor Client
+participant "Phoenix" as Phoenix
+participant "GitHub" as GitHub
+
+' client->server
+Client -> Phoenix: request
+Phoenix -> GitHub: << nuron >>
+
+' server->client
+Phoenix <- GitHub
+Client <- Phoenix: response
+@enduml
