@@ -32,6 +32,11 @@ $ curl http://localhost:4000/repositories | jq
 # => get your watching repositories
 ```
 
+## TODO
+
+- remove all migration because no need
+- error handling
+
 ## LICENSE
 
 MIT
