@@ -4,6 +4,10 @@
 - Phoenix: Web Framework
 - nuron: GraphQL client
 
+## Flow
+
+![flow](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/snamiki1212/example-elixir-phoenix-nuron-graphql/main/docs/flow.plantuml)
+
 ## Getting started
 
 ```zsh
