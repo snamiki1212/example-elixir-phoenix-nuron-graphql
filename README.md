@@ -14,8 +14,18 @@ open config/dev.sercret.exs  # update to use user github api token
 ## set up server
 mix deps.get
 mix server
-curl http://localhost:4000/users/1
+# or
+iex -S mix phx.server # for IEx.pry
+```
+
+## Routing
+
+```zsh
+$ curl http://localhost:4000/users | jq
 # => get your github username
+
+$ curl http://localhost:4000/repositories | jq
+# => get your watching repositories
 ```
 
 ## LICENSE

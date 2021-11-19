@@ -17,4 +17,19 @@ defmodule Gh.GhWebFixtures do
 
     user
   end
+
+  @doc """
+  Generate a repository.
+  """
+  def repository_fixture(attrs \\ %{}) do
+    {:ok, repository} =
+      attrs
+      |> Enum.into(%{
+        name: "some name",
+        url: "some url"
+      })
+      |> Gh.GhWeb.create_repository()
+
+    repository
+  end
 end
