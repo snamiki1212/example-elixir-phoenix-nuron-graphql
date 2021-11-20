@@ -1,6 +1,6 @@
 # elixir-phoenix-nuron-github
 
-- elixir: language
+- Elixir: language
 - Phoenix: Web Framework
 - nuron: GraphQL client
 
@@ -31,10 +31,6 @@ $ curl http://localhost:4000/users | jq
 $ curl http://localhost:4000/repositories | jq
 # => get your watching repositories
 ```
-
-## TODO
-
-- error handling
 
 ## LICENSE
 
