@@ -19,11 +19,7 @@ defmodule GhWeb.UserController do
     )
   end
 
-
-
-
   def index(conn, _params) do
-    # connection
     # TODO: move to somewhere as reusable plug or something.
     url = Application.fetch_env!(:github, :url)
     token = Application.fetch_env!(:github, :api_token)
@@ -32,18 +28,14 @@ defmodule GhWeb.UserController do
     result = get_username() 
 
     username = case result do
-      {:ok, %Neuron.Response{
-        body: body
-      }} -> body["data"]["viewer"]["login"]
+      {:ok, %Neuron.Response{ body: body }} ->
+        username = body["data"]["viewer"]["login"]
+        user = %User{ name: username }
+        render(conn, "show.json", user: user)
 
-      # TODO: error handling
-      _ -> "unknown username"
+      _ ->
+        render(conn, "error.json", %{msg: "cannot connect to github or something error"})
     end
-
-    # 
-    alias Gh.GhWeb.User
-    user = %User{ name: username }
-    render(conn, "show.json", user: user)
   end
 
   # def create(conn, %{"user" => user_params}) do
