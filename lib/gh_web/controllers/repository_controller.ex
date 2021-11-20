@@ -46,22 +46,15 @@ defmodule GhWeb.RepositoryController do
     Neuron.Config.set(headers: [authorization: "Bearer #{token}"])
     result = get_watching_repositories() 
 
-    # IO.inspect(result)
+    case result do
+      {:ok, %Neuron.Response{ body: body }} ->
+        list =
+          body["data"]["viewer"]["watching"]["edges"]
+          |> Enum.map(&convert_edge_to_repo/1)
+        render(conn, "index.json", repositories: list)
 
-    list = case result do
-      {:ok, %Neuron.Response{
-        body: body
-      }} -> body["data"]["viewer"]["watching"]["edges"]
-
-      # TODO: error handling
-      _ -> []
+      _ ->
+        render(conn, "error.json", %{msg: "cannot connect to github or something error"})
     end
-    # IO.inspect(list)
-
-    # require IEx; IEx.pry
-    list = Enum.map(list, &convert_edge_to_repo/1)
-
-    # 
-    render(conn, "index.json", repositories: list)
   end
 end

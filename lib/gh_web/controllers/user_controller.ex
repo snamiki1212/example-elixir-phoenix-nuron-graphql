@@ -27,7 +27,7 @@ defmodule GhWeb.UserController do
     Neuron.Config.set(headers: [authorization: "Bearer #{token}"])
     result = get_username() 
 
-    username = case result do
+    case result do
       {:ok, %Neuron.Response{ body: body }} ->
         username = body["data"]["viewer"]["login"]
         user = %User{ name: username }

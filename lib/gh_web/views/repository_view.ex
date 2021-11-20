@@ -17,4 +17,8 @@ defmodule GhWeb.RepositoryView do
       url: repository.url
     }
   end
+
+  def render("error.json", %{msg: msg}) do
+    %{errors: msg}
+  end
 end
