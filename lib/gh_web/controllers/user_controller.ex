@@ -4,20 +4,9 @@ defmodule GhWeb.UserController do
 
   alias Gh.GhWeb
   alias Gh.GhWeb.User
+  alias Gh.GitHubAdapter
 
   action_fallback GhWeb.FallbackController
-  
-  # TODO: move to adopter layer which connect to somewhere beyond this service.
-  def get_username do
-    Neuron.query("""
-    query GetUserName { 
-      viewer { 
-        login
-      }
-    }
-    """
-    )
-  end
 
   def index(conn, _params) do
     # TODO: move to somewhere as reusable plug or something.
@@ -25,9 +14,8 @@ defmodule GhWeb.UserController do
     token = Application.fetch_env!(:github, :api_token)
     Neuron.Config.set(url: url)
     Neuron.Config.set(headers: [authorization: "Bearer #{token}"])
-    result = get_username() 
 
-    case result do
+    case GitHubAdapter.get_username() do
       {:ok, %Neuron.Response{ body: body }} ->
         username = body["data"]["viewer"]["login"]
         user = %User{ name: username }
