@@ -34,7 +34,6 @@ $ curl http://localhost:4000/repositories | jq
 
 ## TODO
 
-- remove all migration because no need
 - error handling
 
 ## LICENSE
